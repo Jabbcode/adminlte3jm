@@ -9,9 +9,25 @@ class Producto extends Model
 {
     use HasFactory;
 
-    protected $table = "products";
+    protected $fillable = [
+        'slug',
+        'codigo',
+        'descripcion',
+        'inventario_inicial',
+        'unid_medida',
+        'peso_unitario',
+        'cantidad',
+        'peso_total',
+        'ubicacion',
+        'ipc',
+        'stock_max',
+        'stock_min',
+        'ubicacion_geografica',
+        'monto',
+        'monto_dolar'
+    ];
 
-    protected $guarded = [];
+    protected $table = "products";
 
     # Relacion uno a muchos
     
