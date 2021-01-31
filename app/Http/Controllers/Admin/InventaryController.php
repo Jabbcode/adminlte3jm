@@ -39,27 +39,11 @@ class InventaryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'slug' => 'required|unique:products',
-            'codigo' => 'required|unique:products',
-            'descripcion' => 'required',
-            'inventario_inicial' => 'required',
-            'unid_medida' => 'required',
-            'peso_unitario' => 'required',
-            'cantidad' => 'required',
-            'peso_total' => 'required',
-            'ubicacion' => 'required',
-            'ipc' => 'required',
-            'stock_max' => 'required',
-            'stock_min' => 'required',
-            'otra_ubicacion' => 'required',
-            'monto' => 'required',
-            'monto_dolar' => 'required',
-        ]);
+
         
         $product = Producto::create($request->all());
 
-        return redirect()->route('admin.products.edit', $product)->with('info', 'El item se creo con excito');
+        return redirect()->route('admin.products.index', $product)->with('info', 'El item se creo con excito');
     }
 
     /**
@@ -94,23 +78,7 @@ class InventaryController extends Controller
     public function update(Request $request, Producto $product)
     {
 
-        $request->validate([
-            'slug' => "required|unique:products,slug,$product->id",
-            'codigo' => 'required|unique:products',
-            'descripcion' => 'required',
-            'inventario_inicial' => 'required',
-            'unid_medida' => 'required',
-            'peso_unitario' => 'required',
-            'cantidad' => 'required',
-            'peso_total' => 'required',
-            'ubicacion' => 'required',
-            'ipc' => 'required',
-            'stock_max' => 'required',
-            'stock_min' => 'required',
-            'otra_ubicacion' => 'required',
-            'monto' => 'required',
-            'monto_dolar' => 'required',
-        ]);
+
 
         $product->update($request->all());
         
