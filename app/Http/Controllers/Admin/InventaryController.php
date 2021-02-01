@@ -40,10 +40,42 @@ class InventaryController extends Controller
     public function store(Request $request)
     {
 
-        
-        $product = Producto::create($request->all());
+        $request->validate([
+            'slug' => 'required|unique:products,slug,$product->id',
+            'codigo' => 'required',
+            'descripcion' => 'required',
+            'unid_medida' => 'required',
+            'peso_unitario' => 'required',
+            'cantidad' => 'required',
+            //'peso_total' => 'required',
+            'ubicacion' => 'required',
+            'ipc' => 'required',
+            'stock_min' => 'required',
+            'stock_max' => 'required',
+            'ubicacion_geografica' => 'required',
+            'monto' => 'required'
+        ]);
 
-        return redirect()->route('admin.products.index', $product)->with('info', 'El item se creo con excito');
+        $product = Producto::create([
+            'slug' => $request->slug,
+            'codigo' => $request->codigo,
+            'descripcion' => $request->descripcion,
+            'inventario_inicial' => $request->cantidad,
+            'unid_medida' => $request->unid_medida,
+            'peso_unitario' => $request->peso_unitario,
+            'cantidad' => $request->cantidad,
+            'peso_total' => $request->peso_unitario * $request->cantidad,
+            'ubicacion' => $request->ubicacion,
+            'ipc' => $request->ipc,
+            'stock_min' => $request->stock_min,
+            'stock_max' => $request->stock_max,
+            'ubicacion_grografica' => $request->otra_ubicacion,
+            'monto' => $request->monto
+        ]);
+
+        //$product = Producto::create($request->all());
+
+        return redirect()->route('admin.products.show', $product)->with('info', 'El item se creo con excito');
     }
 
     /**
@@ -78,11 +110,13 @@ class InventaryController extends Controller
     public function update(Request $request, Producto $product)
     {
 
-
+        $product->inventario_inicial = $request->cantidad; 
+        
+        //$product->save();
 
         $product->update($request->all());
         
-        return redirect()->route('admin.products.edit', $product)->with('info', 'El item se actualizo con excito');
+        return redirect()->route('admin.products.index', $product)->with('info', 'El item se actualizo con excito');
     }
 
     /**

@@ -3,17 +3,19 @@
 @section('title', '3JM Administrative')
 
 @section('content_header')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-11">
-                <h1>Ingresar nuevo item</h1>
-            </div>
             <div class="col-md-1">
                 <a class="btn btn-primary" href="{{ route('admin.products.index') }}">Regresar</a>
             </div>
+            <div class="col-md-11">
+                <h1 class="fw-bold">Ingresar nuevo item</h1>
+            </div>
+
         </div>
     </div>
 @stop
+
 
 @section('content')
     <div class="container-fluid">
@@ -106,7 +108,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        {{--<div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('peso_total', 'Peso total') !!}
                                 {!! Form::text('peso_total', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el peso total']) !!}
@@ -115,7 +117,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
 
                     <div class="row align-items-center">
