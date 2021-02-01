@@ -246,9 +246,14 @@ return [
             'icon' => 'fas fa-dolly-flatbed',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Clientes',
+            'url'  => '#',
+            'icon' => 'fas fa-users fa-fw',
+        ],
+        [
+            'text' => 'Proveedores',
+            'url'  => '#',
+            'icon' => 'fas fa-user-tie fa-fw',
         ],
         [
             'text'    => 'multilevel',
@@ -287,7 +292,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ]/* ,
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -303,7 +308,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ], */
     ],
 
     /*

@@ -53,13 +53,13 @@
                                 @enderror
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('peso_unitario', 'Peso unitario') !!}
-                                {!! Form::text('peso_unitario', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el peso unitario']) !!}
+                                {!! Form::label('cantidad', 'Disponible') !!}
+                                {!! Form::text('cantidad', null, ['class' => 'form-control']) !!}
                             
-                                @error('peso_unitario')
+                                @error('cantidad')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -89,7 +89,7 @@
                                         'Empaque' => 'Empaque'
                                     ],
                                     null, 
-                                    ['class' => 'form-control', 'placeholder' => 'Seleecione unidad de medida']) !!}
+                                    ['class' => 'form-control', 'readonly']) !!}
 
                                 @error('unid_medida')
                                     <span class="text-danger">{{ $message }}</span>
@@ -99,34 +99,34 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('cantidad', 'Entrada') !!}
-                                {!! Form::text('cantidad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la cantidad']) !!}
+                                {!! Form::label('peso_unitario', 'Peso unitario') !!}
+                                {!! Form::text('peso_unitario', null, ['class' => 'form-control', 'readonly']) !!}
                             
-                                @error('cantidad')
+                                @error('peso_unitario')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
-                        {{--<div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('peso_total', 'Peso total') !!}
-                                {!! Form::text('peso_total', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el peso total']) !!}
+                                {!! Form::text('peso_total', null, ['class' => 'form-control', 'readonly']) !!}
                             
                                 @error('peso_total')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>--}}
+                        </div>
                     </div>
 
                     <div class="row align-items-center">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('ubicacion', 'Ubicacion') !!}
-                                {!! Form::text('ubicacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ubicacion']) !!}
+                                {!! Form::label('ipc', 'IPC') !!}
+                                {!! Form::text('ipc', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el IPC']) !!}
                             
-                                @error('ubicacion')
+                                @error('ipc')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -158,10 +158,10 @@
                     <div class="row align-items-center">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('ipc', 'IPC') !!}
-                                {!! Form::text('ipc', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el IPC']) !!}
+                                {!! Form::label('ubicacion', 'Ubicacion') !!}
+                                {!! Form::text('ubicacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ubicacion']) !!}
                             
-                                @error('ipc')
+                                @error('ubicacion')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

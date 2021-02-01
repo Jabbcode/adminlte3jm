@@ -8,38 +8,15 @@
             <div class="col-md-1">
                 <a class="btn btn-primary" href="{{ route('admin.products.index') }}">Regresar</a>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-9">
                 <h1 class="fw-bold">{{ $product->descripcion}}</h1>
             </div>
-
+            <div class="col-md-2">
+                <a class="btn btn-primary" href="{{ route('admin.products.edit', $product) }}">Editar</a>
+            </div>
         </div>
     </div>
 @stop
-
-{{--@section('content')
-    <div class="container-fluid">
-        <ul class="list-group">
-            <li class="list-group-item active">{{ $product->descripcion }}</li>
-            <li class="list-group-item">{{$product->codigo}}</li>
-            <li class="list-group-item">{{$product->cantidad}}</li>
-            <li class="list-group-item">{{$product->producto_critico}}</li>
-            <li class="list-group-item">{{$product->inventario_inicial}}</li>
-            <li class="list-group-item">{{$product->unid_medida}}</li>
-            <li class="list-group-item">{{$product->peso_total}}</li>
-            <li class="list-group-item">{{$product->ubicacion}}</li>
-            <li class="list-group-item">{{$product->ipc}}</li>
-            <li class="list-group-item">{{$product->stock_min}}</li>
-            <li class="list-group-item">{{$product->stock_max}}</li>
-            <li class="list-group-item">{{$product->cantidad_pedir}}</li>
-          </ul>
-
-        <div class="">{{$product->ajuste_inventario}}</div>
-        <div class="">{{$product->ubicacion}}</div>
-        <div class="">{{$product->ubicacion_geografica}}</div>
-        <div class="">{{$product->monto}}</div>
-        <div class="">{{$product->monto_dolar}}</div>
-    </div>
-@stop--}}
 
 @section('content')
     <div class="container-fluid">

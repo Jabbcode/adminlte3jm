@@ -110,13 +110,27 @@ class InventaryController extends Controller
     public function update(Request $request, Producto $product)
     {
 
-        $product->inventario_inicial = $request->cantidad; 
-        
-        //$product->save();
+        $request->validate([
+            'slug' => 'required',
+            'codigo' => 'required',
+            'descripcion' => 'required',
+            'unid_medida' => 'required',
+            'peso_unitario' => 'required',
+            'cantidad' => 'required',
+            //'peso_total' => 'required',
+            'ubicacion' => 'required',
+            'ipc' => 'required',
+            'stock_min' => 'required',
+            'stock_max' => 'required',
+            'ubicacion_geografica' => 'required',
+            'monto' => 'required'
+        ]);
+
+        $product->cantidad = $product->cantidad - $request->cantidad; 
 
         $product->update($request->all());
         
-        return redirect()->route('admin.products.index', $product)->with('info', 'El item se actualizo con excito');
+        return redirect()->route('admin.products.edit', $product)->with('info', 'El item se actualizo con excito');
     }
 
     /**
