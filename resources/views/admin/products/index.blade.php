@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <td>Codigo</td>
+                        <td>Categoria</td>
                         <td>Descripcion</td>
                         <td>Cantidad</td>
                         <td>Producto critico</td>
@@ -27,6 +28,7 @@
                     @foreach ($productos as $producto)
                         <tr>
                             <td>{{$producto->codigo}}</td>
+                            <td>{{$producto->categoria_id}}</td>
                             <td>{{$producto->descripcion}}</td>
                             <td>{{$producto->cantidad}}</td>
                             <td>{{$producto->producto_critico}}</td>

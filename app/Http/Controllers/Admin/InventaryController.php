@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Producto;
+use App\Models\Categoria;
+use App\Models\Unidades;
 
 class InventaryController extends Controller
 {
@@ -17,8 +19,10 @@ class InventaryController extends Controller
     public function index()
     {
         $productos = Producto::all();
+        $categorias = Categoria::all();
+        $unidades = Unidades::all();
 
-        return view('admin.products.index', compact('productos'));
+        return view('admin.products.index', compact('productos'), compact('categorias'), compact('unidades'));
     }
 
     /**
@@ -26,9 +30,14 @@ class InventaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Categoria $categoria)
     {
-        return view('admin.products.create');
+
+        $categorias = Categoria::get();
+        $unidades = Unidades::all();
+
+
+        return view('admin.products.create', compact('categorias'), compact('unidades'));
     }
 
     /**
@@ -97,7 +106,12 @@ class InventaryController extends Controller
      */
     public function edit(Producto $product)
     {
-        return view('admin.products.edit', compact('product'));
+
+        $categorias = Categoria::all();
+        $unidades = Unidades::all();
+
+
+        return view('admin.products.edit', compact('product'), compact('categorias'), compact('unidades'));
     }
 
     /**

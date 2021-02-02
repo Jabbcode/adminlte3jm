@@ -8,6 +8,7 @@ use App\Models\Compra;
 use App\Models\Ordencompra;
 use App\Models\Producto;
 use App\Models\Proveedor;
+use App\Models\Unidades;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         Proveedor::factory(20)->create();
         Clasificacion::factory(10)->create();
         Ordencompra::factory(20)->create();
+        Unidades::factory(5)->create();
     }
 }

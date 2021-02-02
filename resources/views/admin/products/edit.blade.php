@@ -42,6 +42,26 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {!! Form::label('categoria_id', 'Categoria') !!}
+                                {!! Form::select('categoria_id', 
+                                    [
+                                        'Kilogramos' => 'Kilogramos',
+                                        'Gramos' => 'Gramos',
+                                        'C/U' => 'C/U',
+                                        'Caja' => 'Caja',
+                                        'Empaque' => 'Empaque'
+                                    ],
+                                    null, 
+                                    ['class' => 'form-control', 'readonly']) !!}
+
+                                @error('categoria_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                         
                         <div class="col-md-4">
                             <div class="form-group">
