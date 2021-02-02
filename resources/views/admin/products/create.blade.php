@@ -74,7 +74,7 @@
                                         {!! Form::label('unid_medida', 'Unidad de medida') !!}
                                         {!! Form::select('unid_medida', $unidades,
                                             null, 
-                                            ['class' => 'form-control', 'placeholder' => 'Seleecione unidad de medida']) !!}
+                                            ['class' => 'form-control', 'placeholder' => 'Selecione unidad de medida']) !!}
 
                                         @error('unid_medida')
                                             <span class="text-danger">{{ $message }}</span>

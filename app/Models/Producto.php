@@ -13,16 +13,22 @@ class Producto extends Model
         'slug', 
         'codigo',
         'descripcion',
-        'inventario_inicial',
+        'categoria_id',
+        'proveedor_id',
+        'producto_critico',
         'unid_medida',
-        'peso_unitario',
         'cantidad',
+        'peso_unitario',
         'peso_total',
+        'fecha_ingreso',
+        'precio_unit',
+        'flete_precio',
         'ubicacion',
         'ipc',
-        'stock_max',
         'stock_min',
+        'stock_max',
         'ubicacion_geografica',
+        'inventario_inicial',
         'monto',
         'monto_dolar'
     ];
@@ -57,3 +63,6 @@ class Producto extends Model
         return $this->belongsTo('App\Models\Ordencompra', 'codigo3jm_id');
     }
 }
+
+
+2020_12_03_134246

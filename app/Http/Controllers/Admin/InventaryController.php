@@ -30,12 +30,11 @@ class InventaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Categoria $categoria)
+    public function create()
     {
 
-        $categorias = Categoria::get();
-        $unidades = Unidades::all();
-
+        $categorias = Categoria::pluck('nombre');
+        $unidades = Unidades::pluck('nombre');
 
         return view('admin.products.create', compact('categorias'), compact('unidades'));
     }

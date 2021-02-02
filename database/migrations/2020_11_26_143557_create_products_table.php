@@ -17,16 +17,20 @@ class CreateProductsTable extends Migration
             $table->id();
 
             $table->string('categoria_id')->nullable();
+            $table->string('proveedor_id');
             $table->string('codigo')->unique()->nullable();
             $table->string('descripcion')->nullable();
             $table->string('slug')->nullable();
             $table->double('inventario_inicial')->nullable(); 
             $table->string('unid_medida')->nullable();
+            $table->date('fecha_ingreso')->nullable();
             $table->double('peso_unitario')->nullable();
             $table->double('cantidad')->nullable();
             $table->double('peso_total')->nullable();
             $table->string('ubicacion')->nullable();
             $table->double('ipc')->nullable(); 
+            $table->double('precio_unit')->nullable(); 
+            $table->double('flete_precio')->nullable(); 
             $table->double('stock_max')->nullable();
             $table->double('stock_min')->nullable();
             $table->string('producto_critico')->nullable();
@@ -41,6 +45,11 @@ class CreateProductsTable extends Migration
                 ->on('categoria')
                 ->onUpdate('cascade');
             
+            $table->foreign('proveedor_id')
+                ->references('nombre_empresa')
+                ->on('proveedors')
+                ->onUpdate('cascade');
+
             $table->timestamps();
 
         });
