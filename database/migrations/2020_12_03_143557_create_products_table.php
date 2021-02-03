@@ -23,10 +23,10 @@ class CreateProductsTable extends Migration
                 ->on('categoria')
                 ->onUpdate('cascade');
             
-            $table->string('proveedor_id')->nullable();
+            $table->unsignedBigInteger('proveedor_id')->nullable();
 
             $table->foreign('proveedor_id')
-                ->references('nombre')
+                ->references('id')
                 ->on('proveedores')
                 ->onUpdate('cascade');
 
