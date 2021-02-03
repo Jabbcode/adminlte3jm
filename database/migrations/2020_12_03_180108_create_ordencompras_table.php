@@ -34,12 +34,12 @@ class CreateOrdencomprasTable extends Migration
 
             $table->foreign('proveedor_id')
                 ->references('id')
-                ->on('proveedors')
+                ->on('proveedores')
                 ->onUpdate('cascade');
 
             $table->foreign('codigo3jm_id')
                 ->references('codigo')
-                ->on('products')
+                ->on('productos')
                 ->onUpdate('cascade');
                 
             $table->timestamps();

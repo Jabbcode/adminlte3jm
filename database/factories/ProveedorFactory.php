@@ -23,7 +23,7 @@ class ProveedorFactory extends Factory
     {
         return [
             'rif' => $this->faker->ean8(),
-            'nombre_empresa' => $this->faker->company(),
+            'nombre' => $this->faker->company(),
             'direccion' => $this->faker->address(),
             'persona_contacto' => $this->faker->name(),
             'tlf_oficina' => $this->faker->phoneNumber(),

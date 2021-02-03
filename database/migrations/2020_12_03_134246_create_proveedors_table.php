@@ -13,12 +13,12 @@ class CreateProveedorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proveedors', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
 
-            $table->string('clasificacion_id')->nullable();
             $table->string('rif')->nullable();
-            $table->string('nombre_empresa')->nullable();
+            $table->string('clasificacion_id')->nullable();
+            $table->string('nombre')->nullable();
             $table->string('direccion')->nullable();
             $table->string('persona_contacto')->nullable();
             $table->string('tlf_oficina')->nullable();

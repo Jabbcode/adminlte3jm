@@ -36,7 +36,7 @@ class CreateComprasTable extends Migration
             
             $table->foreign('producto_id')
                 ->references('id')
-                ->on('products')
+                ->on('productos')
                 ->onUpdate('cascade');
 
             $table->timestamps();

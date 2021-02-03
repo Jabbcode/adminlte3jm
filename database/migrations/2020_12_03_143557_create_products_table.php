@@ -13,11 +13,23 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->id();
 
             $table->string('categoria_id')->nullable();
-            $table->string('proveedor_id');
+
+            $table->foreign('categoria_id')
+                ->references('nombre')
+                ->on('categoria')
+                ->onUpdate('cascade');
+            
+            $table->string('proveedor_id')->nullable();
+
+            $table->foreign('proveedor_id')
+                ->references('nombre')
+                ->on('proveedores')
+                ->onUpdate('cascade');
+
             $table->string('codigo')->unique()->nullable();
             $table->string('descripcion')->nullable();
             $table->string('slug')->nullable();
@@ -40,16 +52,6 @@ class CreateProductsTable extends Migration
             $table->double('monto')->nullable();
             $table->double('monto_dolar')->nullable();
 
-            $table->foreign('categoria_id')
-                ->references('nombre')
-                ->on('categoria')
-                ->onUpdate('cascade');
-            
-            $table->foreign('proveedor_id')
-                ->references('nombre_empresa')
-                ->on('proveedors')
-                ->onUpdate('cascade');
-
             $table->timestamps();
 
         });
@@ -62,6 +64,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('producto');
     }
 }

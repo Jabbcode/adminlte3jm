@@ -11,12 +11,10 @@ class Categoria extends Model
 
     protected $table = "categoria";
 
-    protected $guarded = [];
-
         # Relacion uno a muchos (Inversa)
 
         public function productos()
         {
-            return $this->belongsTo('App\Models\Product');
+            return $this->belongsTo('App\Models\Producto');
         }
 }

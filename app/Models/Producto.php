@@ -33,7 +33,7 @@ class Producto extends Model
         'monto_dolar'
     ];
 
-    protected $table = "products";
+    protected $table = "productos";
 
     # Relacion uno a muchos
     
@@ -65,4 +65,4 @@ class Producto extends Model
 }
 
 
-2020_12_03_134246
+//2020_12_03_134246
