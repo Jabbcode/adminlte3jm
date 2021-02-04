@@ -46,7 +46,7 @@
                                 </div>
                                 
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group"> 
                                         {!! Form::label('descripcion', 'Descripcion') !!}
                                         {!! Form::text('descripcion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la descripcion']) !!}
                                     
@@ -58,10 +58,10 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        {!! Form::label('categoria_id', 'Categoria') !!}
-                                        {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Selecione categoria']) !!}
+                                        {!! Form::label('id_categoria', 'Categoria') !!}
+                                        {!! Form::select('id_categoria', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Selecione categoria']) !!}
 
-                                        @error('categoria_id')
+                                        @error('id_categoria')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -72,9 +72,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {!! Form::label('unid_medida', 'Unidad de medida') !!}
-                                        {!! Form::select('unid_medida', $unidades,
-                                            null, 
-                                            ['class' => 'form-control', 'placeholder' => 'Selecione unidad de medida']) !!}
+                                        {!! Form::select('unid_medida', $unidades, null, ['class' => 'form-control', 'placeholder' => 'Selecione unidad de medida']) !!}
 
                                         @error('unid_medida')
                                             <span class="text-danger">{{ $message }}</span>
@@ -112,10 +110,10 @@
                             <div class="row align-items-center"> 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        {!! Form::label('proveedor', 'Proveedor') !!}
-                                        {!! Form::text('proveedor', null, ['class' => 'form-control', 'placeholder' => 'Selecione el proveedor']) !!}
+                                        {!! Form::label('id_proveedor', 'Proveedor') !!}
+                                        {!! Form::select('id_proveedor', $proveedores, null, ['class' => 'form-control', 'placeholder' => 'Selecione el proveedor']) !!}
 
-                                        @error('proveedor')
+                                        @error('id_proveedor')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -124,7 +122,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {!! Form::label('fecha_ingreso', 'Fecha de ingreso') !!}
-                                        {!! Form::text('fecha_ingreso', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de ingreso']) !!}
+                                        {!! Form::date('fecha_ingreso', $fecha , ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de ingreso']) !!}
 
                                         @error('fecha_ingreso')
                                             <span class="text-danger">{{ $message }}</span>
@@ -231,13 +229,11 @@
                                 </div>
 
                                 <div class="col-md-1 mt-3">
-                                    {!! Form::submit('Agregar Item', ['class' => 'btn btn-primary', 'wire:click' => 'store']) !!}
+                                    {!! Form::submit('Agregar Item', ['class' => 'btn btn-primary']) !!}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
             
                 {!! Form::close() !!}
             </div>
@@ -247,7 +243,7 @@
 
 
 @section('js')
-    
+
     <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
 
     <script>
@@ -258,7 +254,6 @@
                 space: '-'
             });
         });
-
     </script>
 
 @endsection

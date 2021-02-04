@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,23 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('categoria_id')->nullable();
-
-            $table->foreign('categoria_id')
-                ->references('nombre')
-                ->on('categoria')
-                ->onUpdate('cascade');
-            
-            $table->unsignedBigInteger('proveedor_id')->nullable();
-
-            $table->foreign('proveedor_id')
-                ->references('id')
-                ->on('proveedores')
-                ->onUpdate('cascade');
-
             $table->string('codigo')->unique()->nullable();
             $table->string('descripcion')->nullable();
             $table->string('slug')->nullable();
+            $table->unsignedBigInteger('id_categoria')->nullable();
+            $table->unsignedBigInteger('id_proveedor')->nullable();
             $table->double('inventario_inicial')->nullable(); 
             $table->string('unid_medida')->nullable();
             $table->date('fecha_ingreso')->nullable();
@@ -50,7 +38,15 @@ class CreateProductsTable extends Migration
             $table->string('ajuste_inventario')->nullable();
             $table->string('ubicacion_geografica')->nullable();
             $table->double('monto')->nullable();
-            $table->double('monto_dolar')->nullable();
+
+            $table->foreign('id_categoria')
+                ->references('id')
+                ->on('categoria');
+
+            $table->foreign('id_proveedor')
+                ->references('id')
+                ->on('proveedores')
+                ->onUpdate('cascade');
 
             $table->timestamps();
 
@@ -64,6 +60,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producto');
+        Schema::dropIfExists('productos');
     }
 }

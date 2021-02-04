@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\Proveedor;
 use App\Models\Unidades;
 
 class InventaryController extends Controller
@@ -32,11 +33,14 @@ class InventaryController extends Controller
      */
     public function create()
     {
+        $date = \Carbon\Carbon::now();
+        $fecha = $date->format('d-m-Y');
 
         $categorias = Categoria::pluck('nombre');
         $unidades = Unidades::pluck('nombre');
+        $proveedores = Proveedor::pluck('nombre');
 
-        return view('admin.products.create', compact('categorias'), compact('unidades'));
+        return view('admin.products.create', compact('categorias', 'unidades', 'proveedores', 'fecha'));
     }
 
     /**
@@ -49,13 +53,17 @@ class InventaryController extends Controller
     {
 
         $request->validate([
-            'slug' => 'required|unique:products,slug,$product->id',
+            'slug' => 'required|unique:productos,slug,$product->id',
             'codigo' => 'required',
             'descripcion' => 'required',
+            'id_categoria' => 'required',
             'unid_medida' => 'required',
-            'peso_unitario' => 'required',
             'cantidad' => 'required',
-            //'peso_total' => 'required',
+            'peso_unitario' => 'required',
+            'id_proveedor' => 'required',
+            'fecha_ingreso' => 'required',
+            'precio_unit' => 'required',
+            'flete_precio' => 'required',
             'ubicacion' => 'required',
             'ipc' => 'required',
             'stock_min' => 'required',
@@ -64,21 +72,30 @@ class InventaryController extends Controller
             'monto' => 'required'
         ]);
 
+
         $product = Producto::create([
+            $producto_critico = 'NO',
+
             'slug' => $request->slug,
             'codigo' => $request->codigo,
             'descripcion' => $request->descripcion,
-            'inventario_inicial' => $request->cantidad,
+            'id_categoria' => $request->id_categoria,
             'unid_medida' => $request->unid_medida,
-            'peso_unitario' => $request->peso_unitario,
             'cantidad' => $request->cantidad,
-            'peso_total' => $request->peso_unitario * $request->cantidad,
+            'peso_unitario' => $request->peso_unitario,
+            'id_proveedor' => $request->id_proveedor,
+            'fecha_ingreso' => $request->fecha_ingreso,
+            'precio_unit' => $request->precio_unit,
+            'flete_precio' => $request->flete_precio,
             'ubicacion' => $request->ubicacion,
             'ipc' => $request->ipc,
             'stock_min' => $request->stock_min,
             'stock_max' => $request->stock_max,
-            'ubicacion_grografica' => $request->otra_ubicacion,
-            'monto' => $request->monto
+            'ubicacion_geografica' => $request->ubicacion_geografica,
+            'monto' => $request->monto,
+            'inventario_inicial' => $request->cantidad,
+            'peso_total' => $request->peso_unitario * $request->cantidad,
+            'producto_critico' => $producto_critico 
         ]);
 
         //$product = Producto::create($request->all());

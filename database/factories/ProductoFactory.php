@@ -58,8 +58,7 @@ class ProductoFactory extends Factory
             'cantidad_pedir' => $cantidad_pedir,
             'ajuste_inventario' => $this->faker->numberBetween(0),
             'ubicacion_geografica' => $this->faker->address(),
-            'monto' => $this->faker->numberBetween(1000000, 5000000),
-            'monto_dolar' => $this->faker->numberBetween(500, 700),
+            'monto' => $this->faker->numberBetween(1000000, 5000000)
         ];
     }
 }

@@ -9,12 +9,14 @@ class Producto extends Model
 {
     use HasFactory;
 
+    protected $table = "productos";
+
     protected $fillable = [
         'slug', 
         'codigo',
         'descripcion',
-        'categoria_id',
-        'proveedor_id',
+        'id_categoria',
+        'id_proveedor',
         'producto_critico',
         'unid_medida',
         'cantidad',
@@ -29,11 +31,10 @@ class Producto extends Model
         'stock_max',
         'ubicacion_geografica',
         'inventario_inicial',
-        'monto',
-        'monto_dolar'
+        'monto'
     ];
 
-    protected $table = "productos";
+
 
     # Relacion uno a muchos
     
