@@ -3,7 +3,7 @@
 @section('title', '3JM Administrative')
 
 @section('content_header')
-    <h1>Proveedor - {{$proveedor->nombre}}</h1>
+    <h1>Agregar informacion de nuevo cliente</h1>
 @stop
 
 @section('content')

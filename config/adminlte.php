@@ -235,9 +235,9 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Dashboard',
-            'route'         => 'admin.home',
-            'icon'        => 'fas fa-tachometer-alt fa-fw',
+            'text'  => 'Dashboard',
+            'route' => 'admin.home',
+            'icon'  => 'fas fa-tachometer-alt fa-fw',
         ],
         ['header' => 'ADMINISTRADOR'],
         [
@@ -247,12 +247,12 @@ return [
         ],
         [
             'text' => 'Clientes',
-            'url'  => '#',
+            'route'  => 'admin.clients.index',
             'icon' => 'fas fa-users fa-fw',
         ],
         [
             'text' => 'Proveedores',
-            'url'  => '#',
+            'route'  => 'admin.proveedors.index',
             'icon' => 'fas fa-user-tie fa-fw',
         ],
         [
