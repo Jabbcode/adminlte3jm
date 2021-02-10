@@ -23,6 +23,10 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+/*         $nombre  = "Jefferson Brioso";
+        $email = "jabbsontouch@gmail.com";
+        $contrasena = '12457839'; */
+
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,

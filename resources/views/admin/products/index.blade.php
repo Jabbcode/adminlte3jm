@@ -28,7 +28,11 @@
                     @foreach ($productos as $producto)
                         <tr>
                             <td>{{$producto->codigo}}</td>
-                            <td>{{$producto->categoria_id}}</td>
+                            @foreach ($categorias as $categoria)
+                                @if ($producto->id_categoria == $categoria->id)
+                                    <td>{{$categoria->nombre}}</td>
+                                @endif
+                            @endforeach
                             <td>{{$producto->descripcion}}</td>
                             <td>{{$producto->cantidad}}</td>
                             <td>{{$producto->producto_critico}}</td>

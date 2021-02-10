@@ -17,6 +17,7 @@ class Producto extends Model
         'descripcion',
         'id_categoria',
         'id_proveedor',
+        'id_unidades',
         'producto_critico',
         'unid_medida',
         'cantidad',
@@ -34,7 +35,12 @@ class Producto extends Model
         'monto'
     ];
 
+    # Relacion uno a uno 
 
+    public function unidad() 
+    {
+        return $this->hasOne('App\Models\Unidades');
+    }
 
     # Relacion uno a muchos
     

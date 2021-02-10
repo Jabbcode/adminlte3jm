@@ -23,7 +23,11 @@ class InventaryController extends Controller
         $categorias = Categoria::all();
         $unidades = Unidades::all();
 
-        return view('admin.products.index', compact('productos'), compact('categorias'), compact('unidades'));
+        /*echo var_dump($categorias[0]->id);
+
+        echo var_dump($productos[0]->id_categoria); */
+
+        return view('admin.products.index', compact('productos', 'categorias', 'unidades'));
     }
 
     /**
@@ -36,9 +40,9 @@ class InventaryController extends Controller
         $date = \Carbon\Carbon::now();
         $fecha = $date->format('d-m-Y');
 
-        $categorias = Categoria::pluck('nombre');
-        $unidades = Unidades::pluck('nombre');
-        $proveedores = Proveedor::pluck('nombre');
+        $categorias = Categoria::orderBy('id', 'ASC')->pluck('nombre');
+        $unidades = Unidades::orderBy('id', 'ASC')->pluck('nombre');
+        $proveedores = Proveedor::orderBy('id', 'ASC')->pluck('nombre');
 
         return view('admin.products.create', compact('categorias', 'unidades', 'proveedores', 'fecha'));
     }
@@ -57,7 +61,7 @@ class InventaryController extends Controller
             'codigo' => 'required',
             'descripcion' => 'required',
             'id_categoria' => 'required',
-            'unid_medida' => 'required',
+            'id_unidades' => 'required',
             'cantidad' => 'required',
             'peso_unitario' => 'required',
             'id_proveedor' => 'required',
@@ -76,11 +80,15 @@ class InventaryController extends Controller
         $product = Producto::create([
             $producto_critico = 'NO',
 
+            $request->id_categoria = $request->id_categoria + 1, 
+            $request->id_proveedor = $request->id_proveedor + 1, 
+            $request->id_unidades = $request->id_unidades + 1, 
+
             'slug' => $request->slug,
             'codigo' => $request->codigo,
             'descripcion' => $request->descripcion,
             'id_categoria' => $request->id_categoria,
-            'unid_medida' => $request->unid_medida,
+            'id_unidades' => $request->id_unidades,
             'cantidad' => $request->cantidad,
             'peso_unitario' => $request->peso_unitario,
             'id_proveedor' => $request->id_proveedor,
@@ -111,7 +119,20 @@ class InventaryController extends Controller
      */
     public function show(Producto $product)
     {
-        return view('admin.products.show', compact('product'));
+
+        /*$categorias = Categoria::orderBy('id', 'ASC')->pluck('nombre'); */
+        /*$unidades = Unidades::orderBy('id', 'ASC')->pluck('nombre'); */
+        /*$proveedores = Proveedor::orderBy('id', 'ASC')->pluck('nombre'); */
+
+        $categoria = Categoria::where('id', '=', $product->id_categoria)->get();
+        $proveedor = Proveedor::where('id', '=', $product->id_proveedor)->get();
+        $unidades = Unidades::where('id', '=', $product->id_unidades)->get();
+
+        $nombreCategoria = $categoria[0]->nombre;
+        $nombreProveedor = $proveedor[0]->nombre;
+        $nombreUnidad = $unidades[0]->nombre;
+
+        return view('admin.products.show', compact('product', 'nombreCategoria', 'nombreProveedor', 'nombreUnidad'));
     }
 
     /**
@@ -123,11 +144,19 @@ class InventaryController extends Controller
     public function edit(Producto $product)
     {
 
-        $categorias = Categoria::all();
-        $unidades = Unidades::all();
+        $categorias = Categoria::orderBy('id', 'ASC')->pluck('nombre');
+        $unidades = Unidades::orderBy('id', 'ASC')->pluck('nombre');
+        $proveedores = Proveedor::orderBy('id', 'ASC')->pluck('nombre');
+
+        $product->id_categoria = $product->id_categoria - 1;
+        $product->id_proveedor = $product->id_proveedor - 1; 
+        $product->id_unidades = $product->id_unidades - 1;
+
+        $date = \Carbon\Carbon::now();
+        $fecha = $date->format('d-m-Y');
 
 
-        return view('admin.products.edit', compact('product'), compact('categorias'), compact('unidades'));
+        return view('admin.products.edit', compact('product', 'categorias', 'unidades', 'proveedores', 'fecha'));
     }
 
     /**
@@ -139,15 +168,18 @@ class InventaryController extends Controller
      */
     public function update(Request $request, Producto $product)
     {
-
         $request->validate([
             'slug' => 'required',
             'codigo' => 'required',
             'descripcion' => 'required',
-            'unid_medida' => 'required',
-            'peso_unitario' => 'required',
+            'id_categoria' => 'required',
+            'id_unidades' => 'required',
             'cantidad' => 'required',
-            //'peso_total' => 'required',
+            'peso_unitario' => 'required',
+            'id_proveedor' => 'required',
+            'fecha_ingreso' => 'required',
+            'precio_unit' => 'required',
+            'flete_precio' => 'required',
             'ubicacion' => 'required',
             'ipc' => 'required',
             'stock_min' => 'required',
@@ -156,11 +188,41 @@ class InventaryController extends Controller
             'monto' => 'required'
         ]);
 
-        $product->cantidad = $product->cantidad - $request->cantidad; 
+        $product->update([
 
-        $product->update($request->all());
+            $request->id_categoria = $request->id_categoria + 1, 
+            $request->id_proveedor = $request->id_proveedor + 1, 
+            $request->id_unidades = $request->id_unidades + 1, 
+
+            $request->cantidad = $product->cantidad - $request->cantidad,
+
+            'slug' => $request->slug,
+            'codigo' => $request->codigo,
+            'descripcion' => $request->descripcion,
+            'id_categoria' => $request->id_categoria,
+            'id_unidades' => $request->id_unidades,
+            'cantidad' => $request->cantidad,
+            'peso_unitario' => $request->peso_unitario,
+            'id_proveedor' => $request->id_proveedor,
+            'fecha_ingreso' => $request->fecha_ingreso,
+            'precio_unit' => $request->precio_unit,
+            'flete_precio' => $request->flete_precio,
+            'ubicacion' => $request->ubicacion,
+            'ipc' => $request->ipc,
+            'stock_min' => $request->stock_min,
+            'stock_max' => $request->stock_max,
+            'ubicacion_geografica' => $request->ubicacion_geografica,
+            'monto' => $request->monto,
+            'inventario_inicial' => $request->cantidad,
+            'peso_total' => $request->peso_unitario * $request->cantidad,
+            /* 'producto_critico' => $producto_critico  */
+        ]);
+
         
-        return redirect()->route('admin.products.edit', $product)->with('info', 'El item se actualizo con excito');
+        //$product->update($request->all());
+        //$product->save();
+        
+        return redirect()->route('admin.products.show', $product)->with('info', 'El item se actualizo con excito');
     }
 
     /**

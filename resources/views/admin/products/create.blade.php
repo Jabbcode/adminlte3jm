@@ -54,7 +54,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> 
 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -63,7 +63,7 @@
 
                                         @error('id_categoria')
                                             <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        @enderror 
                                     </div>
                                 </div>
                             </div>
@@ -71,10 +71,10 @@
                             <div class="row align-items-center"> 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        {!! Form::label('unid_medida', 'Unidad de medida') !!}
-                                        {!! Form::select('unid_medida', $unidades, null, ['class' => 'form-control', 'placeholder' => 'Selecione unidad de medida']) !!}
+                                        {!! Form::label('id_unidades', 'Unidad de medida') !!}
+                                        {!! Form::select('id_unidades', $unidades, null, ['class' => 'form-control', 'placeholder' => 'Selecione unidad de medida']) !!}
 
-                                        @error('unid_medida')
+                                        @error('id_unidades')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

@@ -21,8 +21,8 @@ class CreateProductosTable extends Migration
             $table->string('slug')->nullable();
             $table->unsignedBigInteger('id_categoria')->nullable();
             $table->unsignedBigInteger('id_proveedor')->nullable();
+            $table->unsignedBigInteger('id_unidades')->nullable();
             $table->double('inventario_inicial')->nullable(); 
-            $table->string('unid_medida')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->double('peso_unitario')->nullable();
             $table->double('cantidad')->nullable();
@@ -41,11 +41,17 @@ class CreateProductosTable extends Migration
 
             $table->foreign('id_categoria')
                 ->references('id')
-                ->on('categoria');
+                ->on('categoria')
+                ->onUpdate('cascade');
 
             $table->foreign('id_proveedor')
                 ->references('id')
                 ->on('proveedores')
+                ->onUpdate('cascade');
+
+            $table->foreign('id_unidades')
+                ->references('id')
+                ->on('unidades')
                 ->onUpdate('cascade');
 
             $table->timestamps();
