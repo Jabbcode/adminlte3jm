@@ -60,7 +60,7 @@ class ProductoFactory extends Factory
             'monto' => $this->faker->numberBetween(1000000, 5000000),
             'precio_unit' => $this->faker->numberBetween(4000, 12000),
             'flete_precio' => $this->faker->numberBetween(4000, 12000),
-            'fecha_ingreso' => $this->faker->date($format = 'Y-m-d', $max = 'now')
+            'fecha_ingreso' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         ];
     }
 }

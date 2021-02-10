@@ -190,11 +190,15 @@ class InventaryController extends Controller
 
         $product->update([
 
+            
+/*             if($request->cantidad <= $request->stock_min) {
+                $request->producto_critico = 'SI'
+            } */
+
             $request->id_categoria = $request->id_categoria + 1, 
             $request->id_proveedor = $request->id_proveedor + 1, 
             $request->id_unidades = $request->id_unidades + 1, 
-
-            $request->cantidad = $product->cantidad - $request->cantidad,
+            /* $request->cantidad = $product->cantidad - $request->cantidad, */
 
             'slug' => $request->slug,
             'codigo' => $request->codigo,
