@@ -217,7 +217,7 @@
                             </div>
 
                             <div class="row align-items-center">
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         {!! Form::label('monto', 'Monto en Bs.S') !!}
                                         {!! Form::text('monto', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el monto en Bolivares']) !!}
@@ -226,7 +226,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-1 mt-3">
                                     {!! Form::submit('Agregar Item', ['class' => 'btn btn-primary']) !!}

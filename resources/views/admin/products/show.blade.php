@@ -56,6 +56,11 @@
                                     <label class="form-label">Inventario Inicial</label>
                                     <div class="form-control">{{$product->inventario_inicial}}</div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Disponible</label>
+                                    <div class="form-control">{{$product->cantidad}}</div>
+                                </div>
         
                                 <div class="col-md-4">
                                     <label class="form-label">Inventario Final</label>
@@ -85,8 +90,8 @@
 
                             <div class="row align-items-center">
                                 <div class="col-md-4">
-                                    <label class="form-label">Fecha de salida</label>
-                                    <div class="form-control">{{$product->fecha_salida}}</div>
+                                    <label class="form-label">Peso total</label>
+                                    <div class="form-control">{{$product->peso_total}}</div>
                                 </div>
 
                                 <div class="col-md-4">

@@ -73,12 +73,13 @@ class InventaryController extends Controller
             'stock_min' => 'required',
             'stock_max' => 'required',
             'ubicacion_geografica' => 'required',
-            'monto' => 'required'
         ]);
 
 
         $product = Producto::create([
             $producto_critico = 'NO',
+
+            $monto = ($request->precio_unit + $request->flete_precio) * $request->cantidad,
 
             $request->id_categoria = $request->id_categoria + 1, 
             $request->id_proveedor = $request->id_proveedor + 1, 
@@ -100,11 +101,13 @@ class InventaryController extends Controller
             'stock_min' => $request->stock_min,
             'stock_max' => $request->stock_max,
             'ubicacion_geografica' => $request->ubicacion_geografica,
-            'monto' => $request->monto,
+            'monto' => $monto,
             'inventario_inicial' => $request->cantidad,
             'peso_total' => $request->peso_unitario * $request->cantidad,
             'producto_critico' => $producto_critico 
         ]);
+
+        //echo $product;
 
         //$product = Producto::create($request->all());
 
@@ -184,14 +187,11 @@ class InventaryController extends Controller
             'ipc' => 'required',
             'stock_min' => 'required',
             'stock_max' => 'required',
-            'ubicacion_geografica' => 'required',
-            'monto' => 'required'
-        ]);
+            'ubicacion_geografica' => 'required'
+        ]);    
 
         $product->update([
-
-            
-/*             if($request->cantidad <= $request->stock_min) {
+            /*if($request->cantidad <= $request->stock_min) {
                 $request->producto_critico = 'SI'
             } */
 
@@ -199,6 +199,7 @@ class InventaryController extends Controller
             $request->id_proveedor = $request->id_proveedor + 1, 
             $request->id_unidades = $request->id_unidades + 1, 
             /* $request->cantidad = $product->cantidad - $request->cantidad, */
+            $monto = ($request->precio_unit + $request->flete_precio) * $request->cantidad,
 
             'slug' => $request->slug,
             'codigo' => $request->codigo,
@@ -216,9 +217,9 @@ class InventaryController extends Controller
             'stock_min' => $request->stock_min,
             'stock_max' => $request->stock_max,
             'ubicacion_geografica' => $request->ubicacion_geografica,
-            'monto' => $request->monto,
+            'monto' => $monto,
             'inventario_inicial' => $request->cantidad,
-            'peso_total' => $request->peso_unitario * $request->cantidad,
+            'peso_total' => $request->peso_unitario * $request->cantidad
             /* 'producto_critico' => $producto_critico  */
         ]);
 
