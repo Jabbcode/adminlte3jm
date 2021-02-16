@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use App\Models\Compra;
 
-class ProveedorController extends Controller
+class SellController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class ProveedorController extends Controller
      */
     public function index()
     {
+        $ventas = Compra::all();
 
-        $proveedores = Proveedor::all();
-
-        return view('admin.proveedors.index', compact('proveedores')); 
+        return view('admin.ventas.index', compact('ventas'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('admin.proveedors.create');
+        //
     }
 
     /**
@@ -48,9 +47,9 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedor $proveedor)
+    public function show($id)
     {
-        return view('admin.proveedors.show', compact('proveedor'));
+        //
     }
 
     /**
@@ -59,9 +58,9 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor)
+    public function edit($id)
     {
-        return view('admin.proveedors.edit', compact('proveedor'));
+        //
     }
 
     /**
@@ -71,7 +70,7 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,7 +81,7 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
         //
     }

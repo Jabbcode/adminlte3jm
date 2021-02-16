@@ -256,6 +256,16 @@ return [
             'icon' => 'fas fa-user-tie fa-fw',
         ],
         [
+            'text' => 'Compras',
+            'route'  => 'admin.compras.index',
+            'icon' => 'fas fa-shopping-cart',
+        ],
+        [
+            'text' => 'Ventas',
+            'route'  => 'admin.ventas.index',
+            'icon' => 'fas fa-wallet',
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
