@@ -36,9 +36,6 @@
                             <td>{{$compra->fecha_salida}}</td>
                             <td></td>
                             <td width="10px">
-                                <a href="{{ route('admin.compras.edit', $compra) }}"><i class="far fa-edit"></i></a>
-                            </td>
-                            <td width="10px">
                                 <a href="{{ route('admin.compras.update', $compra) }}"><i class="fas fa-eye"></i></a>
                             </td>
                         </tr>

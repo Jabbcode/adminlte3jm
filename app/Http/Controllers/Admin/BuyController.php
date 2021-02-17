@@ -7,6 +7,7 @@ use App\Models\orden_compra;
 use App\Models\ordenProducto;
 use App\Models\Producto;
 use App\Models\Proveedor;
+use App\Models\Unidades;
 use Illuminate\Http\Request;
 
 class BuyController extends Controller
@@ -54,22 +55,21 @@ class BuyController extends Controller
     public function show(orden_compra $compra)
     {
         $proveedores = Proveedor::all();
-
+        $unidades = Unidades::all();
+        $i = 0;
         $id = $compra->id;
         
         $orden = ordenProducto::where('orden_compra_id', '=', $id)->get();
         
-        $orden;
-        
         $productos = Producto::all();
 
-        echo $compra;
+        /* echo $compra; */
         
         //echo $productos;
 
         //echo $ordenProducto;
 
-        //return view('admin.compras.show', compact('productos', 'orden', 'compra', 'proveedores'));
+        return view('admin.compras.show', compact('productos', 'orden', 'compra', 'proveedores', 'unidades', 'i'));
     }
 
     /**

@@ -246,11 +246,6 @@ return [
             'icon' => 'fas fa-dolly-flatbed',
         ],
         [
-            'text' => 'Clientes',
-            'route'  => 'admin.clients.index',
-            'icon' => 'fas fa-users fa-fw',
-        ],
-        [
             'text' => 'Proveedores',
             'route'  => 'admin.proveedors.index',
             'icon' => 'fas fa-user-tie fa-fw',
@@ -259,6 +254,11 @@ return [
             'text' => 'Compras',
             'route'  => 'admin.compras.index',
             'icon' => 'fas fa-shopping-cart',
+        ],
+        [
+            'text' => 'Clientes',
+            'route'  => 'admin.clients.index',
+            'icon' => 'fas fa-users fa-fw',
         ],
         [
             'text' => 'Ventas',

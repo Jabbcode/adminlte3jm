@@ -37,7 +37,7 @@
                                 <a href="{{ route('admin.proveedors.update', $proveedor) }}"><i class="fas fa-eye"></i></a>
                             </td>
                             <td width="10px">
-                                <a href="{{ route('admin.proveedors.index', $proveedor) }}"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="{{ route('admin.compras.create', $proveedor) }}"><i class="fas fa-shopping-cart"></i></a>
                             </td>
                         </tr>
                     @endforeach

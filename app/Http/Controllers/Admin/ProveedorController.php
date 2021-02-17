@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Clasificacion;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
@@ -23,12 +24,15 @@ class ProveedorController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('admin.proveedors.create');
+        $proveedores = Proveedor::orderBy('id', 'ASC')->pluck('nombre');
+        $clasificacion = Clasificacion::orderBy('id', 'ASC')->pluck('nombre');
+
+        return view('admin.proveedors.create', compact('proveedores', 'clasificacion'));
     }
 
     /**

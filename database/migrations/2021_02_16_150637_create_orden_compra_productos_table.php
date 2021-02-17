@@ -16,8 +16,15 @@ class CreateOrdenCompraProductosTable extends Migration
         Schema::create('orden_compra_producto', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('orden_compra_id');
-            $table->unsignedBigInteger('producto_id');
+            $table->unsignedBigInteger('orden_compra_id')->nullable();
+            $table->unsignedBigInteger('producto_id')->nullable();
+            $table->integer('renglon');
+            $table->string('codigo');
+            $table->integer('empaque');
+            $table->integer('bulto');
+            $table->integer('cantidad');
+            $table->double('peso_total');
+            $table->double('monto');
 
             $table->foreign('orden_compra_id')
                 ->references('id')

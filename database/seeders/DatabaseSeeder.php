@@ -10,6 +10,7 @@ use App\Models\Producto;
 use App\Models\Proveedor;
 use App\Models\Unidades;
 use App\Models\User;
+use Database\Factories\OrdenproductoFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,14 +22,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //User::factory()->create();
-        Producto::factory(10)->create();
         Categoria::factory(5)->create();
-        Compra::factory(10)->create();
-        Proveedor::factory(20)->create();
         Clasificacion::factory(10)->create();
-        Unidades::factory(5)->create();
+        Compra::factory(10)->create();
         orden_compra::factory(10)->create();
+        //OrdenproductoFactory::factory(10)->create();
+        Producto::factory(10)->create();
+        Proveedor::factory(20)->create();
+        Unidades::factory(5)->create();
+        //User::factory()->create();
 
     }
 }
