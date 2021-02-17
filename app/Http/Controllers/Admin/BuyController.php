@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Compra;
+use App\Models\orden_compra;
+use App\Models\ordenProducto;
+use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class BuyController extends Controller
@@ -15,9 +18,10 @@ class BuyController extends Controller
      */
     public function index()
     {
-        $compras = Compra::all();
+        $compras = orden_compra::all();
+        $proveedores = Proveedor::all();
 
-        return view('admin.compras.index', compact('compras'));
+        return view('admin.compras.index', compact('compras', 'proveedores'));
     }
 
     /**
@@ -47,9 +51,25 @@ class BuyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(orden_compra $compra)
     {
-        //
+        $proveedores = Proveedor::all();
+
+        $id = $compra->id;
+        
+        $orden = ordenProducto::where('orden_compra_id', '=', $id)->get();
+        
+        $orden;
+        
+        $productos = Producto::all();
+
+        echo $compra;
+        
+        //echo $productos;
+
+        //echo $ordenProducto;
+
+        //return view('admin.compras.show', compact('productos', 'orden', 'compra', 'proveedores'));
     }
 
     /**

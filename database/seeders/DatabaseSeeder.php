@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Categoria;
 use App\Models\Clasificacion;
 use App\Models\Compra;
-use App\Models\Ordencompra;
+use App\Models\orden_compra;
 use App\Models\Producto;
 use App\Models\Proveedor;
 use App\Models\Unidades;
@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         Compra::factory(10)->create();
         Proveedor::factory(20)->create();
         Clasificacion::factory(10)->create();
-        Ordencompra::factory(20)->create();
         Unidades::factory(5)->create();
+        orden_compra::factory(10)->create();
 
     }
 }

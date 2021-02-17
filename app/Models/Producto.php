@@ -60,14 +60,14 @@ class Producto extends Model
 
     public function proveedores()
     {
-        return $this->belongsToMany('App\Models\Proveedor');
+        return $this->belongsToMany(proveedor::class);
     }
 
     # Relacion muchos a muchos (inversa)
 
     public function ordenCompra()
     {
-        return $this->belongsTo('App\Models\Ordencompra', 'codigo3jm_id');
+        return $this->belongsTo(orden_compra::class);
     }
 }
 

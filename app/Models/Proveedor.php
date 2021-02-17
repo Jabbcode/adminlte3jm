@@ -19,4 +19,11 @@ class Proveedor extends Model
     {
         return $this->belongsToMany('App\Models\Producto');
     }
+
+    # Relacion uno a muchos (Inversa)
+
+    public function ordenCompra()
+    {
+        return $this->belongsTo('App\Models\orden_compra');
+    }
 }

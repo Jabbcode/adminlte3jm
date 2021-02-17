@@ -16,9 +16,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>Proveedor</td>
+                        <td>Numero de orden</td>
+                        <td>Fecha de salida</td>
                         <td></td>
                         <td></td>
                         <td colspan="2"></td>
@@ -27,15 +27,19 @@
                 <tbody>
                     @foreach ($compras as $compra)
                         <tr>
-                            <td>{{-- {{$compra->}} --}}</td>
-                            <td>{{-- {{$compra->}} --}}</td>
-                            <td>{{-- {{$compra->}} --}}</td>
-                            <td>{{-- {{$compra->}} --}}</td>
+                            @foreach ($proveedores as $proveedor)
+                                @if ($compra->id_proveedor == $proveedor->id)
+                                    <td>{{$proveedor->nombre}}</td>
+                                @endif
+                            @endforeach
+                            <td>{{$compra->orden}}</td>
+                            <td>{{$compra->fecha_salida}}</td>
+                            <td></td>
                             <td width="10px">
-                                <a href="{{ route('admin.clients.edit', $compra) }}"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('admin.compras.edit', $compra) }}"><i class="far fa-edit"></i></a>
                             </td>
                             <td width="10px">
-                                <a href="{{ route('admin.clients.update', $compra) }}"><i class="fas fa-eye"></i></a>
+                                <a href="{{ route('admin.compras.update', $compra) }}"><i class="fas fa-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach
