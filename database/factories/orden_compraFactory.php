@@ -28,10 +28,11 @@ class orden_compraFactory extends Factory
 
         $id_proveedor = 1;
         $id_codigo = 1;
+        $i = 0;
 
         return [
 
-            'orden' => $this->faker->swiftBicNumber(),
+            'orden' => $i++,
             'fecha_salida' => $this->faker->date($format = 'Y-m-d', $max = 'now')
         ];
     }

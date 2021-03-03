@@ -82,7 +82,7 @@
                                         @endforeach
                                         <td>{{ $o->empaque}}</td>
                                         <td>{{ $o->bulto}}</td>
-                                        <td>{{ $o->cantidad}}</td>
+                                        <td>{{ $o->cantidad}}</td> 
                                         <td>{{ $producto->peso_unitario}}</td>
                                         <td>{{ $o->peso_total}}</td>
                                         <td>{{ $producto->precio_unit}}</td>

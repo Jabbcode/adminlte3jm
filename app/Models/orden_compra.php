@@ -11,6 +11,13 @@ class orden_compra extends Model
 
     protected $table = "orden_compra";
 
+    protected $fillable = [
+        'id_proveedor',
+        'codigo_3jm',
+        'fecha_salida',
+        'orden'
+    ];
+
     # Relacion uno a muchos
 
     public function proveedor() 

@@ -51,7 +51,6 @@
                                         {!! Form::label('nombre', 'Nombre') !!}
                                         {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre']) !!}
 
-
                                         @error('nombre')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -113,7 +112,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {!! Form::label('email', 'Correo electronico') !!}
-                                        {!! Form::text('email', ['class' => 'form-control', 'placeholder' => 'Ingrese el correo electronico']) !!}
+                                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el correo Electronico']) !!}
 
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
@@ -147,7 +146,6 @@
                             </div>
                         </div>
                     </div>
-            
                 {!! Form::close() !!}
             </div>
         </div>

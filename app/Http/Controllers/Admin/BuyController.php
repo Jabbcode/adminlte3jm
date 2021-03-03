@@ -32,7 +32,20 @@ class BuyController extends Controller
      */
     public function create()
     {
-        //
+        $codigos = Producto::orderBy('id', 'ASC')->pluck('codigo');
+        $descripciones = Producto::orderBy('id', 'ASC')->pluck('descripcion');
+        $peso = Producto::orderBy('id', 'ASC')->pluck('peso_unitario');
+
+        $producto = Producto::all();
+
+        $proveedores = Proveedor::orderBy('id', 'ASC')->pluck('nombre');
+        $orden = orden_compra::latest('id')->first();
+        $orden->orden++;
+
+        $date = \Carbon\Carbon::now();
+        $fecha = $date->format('d-m-Y');
+
+        return view('admin.compras.create', compact('proveedores', 'orden', 'fecha', 'codigos', 'descripciones', 'peso'));
     }
 
     /**
