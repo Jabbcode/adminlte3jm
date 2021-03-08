@@ -1,6 +1,7 @@
 <div>
     <div class="col-md-2">
         <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})">Añadir</button>
+        <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$i}})">Remover</button>
     </div>
     {!! Form::open(['route' => 'admin.compras.store']) !!}
             <div class="add-input">
@@ -25,15 +26,15 @@
                     <tbody>
                 <tr>
                     <td>
-                        <div class="form-group">
-                            {!! Form::text('renglon.0', null, ['class' => 'form-control', 'wire:model' => "renglon.0"]) !!}
+                         <div class="form-group">
+                            {!! Form::text('renglon.0', $i, null, ['class' => 'form-control', 'wire:model' => "renglon.0"]) !!}
         
                             @error('renglon.0')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </td>
-                    <td>
+                  <td>
                         <div class="form-group">
                             {!! Form::text('codigo_3jm.0', null, ['class' => 'form-control', 'wire:model' => "codigo_3jm.0"]) !!}
         
@@ -42,7 +43,7 @@
                             @enderror
                         </div>
                     </td>
-                    <td>
+                      <td>
                         <div class="form-group">
                             {!! Form::text('codigo.0', null, ['class' => 'form-control', 'wire:model' => "codigo.0"]) !!}
         
@@ -51,15 +52,15 @@
                             @enderror
                         </div>
                     </td>
-                    <td>
+                    {{--<td>
                         <div class="form-group">
-                            {!! Form::text('descripcion.0', null, ['class' => 'form-control', 'wire:model' => "descripcion.0"]) !!}
+                            {!! Form::select('descripcion.0', $descripcion, null, ['class' => 'form-control', 'wire:model' => "descripcion.0"]) !!}
         
                             @error('descripcion.0')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </td>
+                    </td>--}}
                     <td>
                         <div class="form-group">
                             {!! Form::text('descripcion.0', null, ['class' => 'form-control', 'wire:model' => "descripcion.0"]) !!}
@@ -131,7 +132,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </td>
+                    </td> --}}
                 </tr>
             
             </div>
@@ -142,7 +143,7 @@
                     <div class="row align-items-center">
                         <td>
                             <div class="form-group">
-                                {!! Form::text('renglon.{{ $value }}', null, ['class' => 'form-control', 'wire:model' => "renglon.{{ $value }}"]) !!}
+                                {!! Form::text('renglon.{{ $value }}', $i, null, ['class' => 'form-control', 'wire:model' => "renglon.{{ $value }}"]) !!}
             
                                 @error('renglon.{{ $value }}')
                                     <span class="text-danger">{{ $message }}</span>
@@ -170,7 +171,7 @@
                         <td>
                             <div class="form-group">
                                 {!! Form::text('descripcion.{{ $value }}', null, ['class' => 'form-control', 'wire:model' => "descripcion.{{ $value }}"]) !!}
-            
+
                                 @error('descripcion.{{ $value }}')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -248,10 +249,14 @@
                                 @enderror
                             </div>
                         </td>
-                        <td>
+{{--                         <td>
                             <div class="col-md-4">
                                 <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">Remover</button>
                             </div>
+                        </td> --}}
+
+                        <td>
+                            <button class="btn btn-danger btn-sm" wire:click.prevent="cargar({{$id_producto}})">cargar</button>
                         </td>
                     </div>
                     </tr>
